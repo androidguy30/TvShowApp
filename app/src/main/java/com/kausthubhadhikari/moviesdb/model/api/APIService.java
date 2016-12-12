@@ -1,0 +1,59 @@
+package com.kausthubhadhikari.moviesdb.model.api;
+
+import com.kausthubhadhikari.moviesdb.model.pojo.detail.TVShowDetails;
+import com.kausthubhadhikari.moviesdb.model.pojo.onair.OnAirPojo;
+import com.kausthubhadhikari.moviesdb.model.pojo.toprated.TVTopRated;
+import com.kausthubhadhikari.moviesdb.model.pojo.popular.PopularPOJO;
+
+import java.util.Map;
+
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
+import rx.Observable;
+
+/**
+ * Created by kausthubhadhikari on 12/12/16.
+ */
+
+public interface APIService {
+
+    /**
+     * Show details
+     *
+     * @param query
+     * @param tvShowId
+     * @return
+     */
+    @GET("/tv")
+    Observable<TVShowDetails> getShowDetails(@QueryMap Map<String, String> query, @Path("tv_id") String tvShowId);
+
+    /**
+     * Retrieve Top rated shows.
+     *
+     * @param queryParam
+     * @return
+     */
+    @GET("/tv/top_rated")
+    Observable<TVTopRated> getTopRated(@QueryMap Map<String, String> queryParam);
+
+    /**
+     * Retrieve OnAir
+     *
+     * @param queryParams
+     * @return
+     */
+    @GET("/tv/on_the_air")
+    Observable<OnAirPojo> getOnAir(@QueryMap Map<String, String> queryParams);
+
+    /**
+     * Retrieve Popular Tv Shows
+     *
+     * @param queryParams
+     * @return
+     */
+    @GET("/tv/popular")
+    Observable<PopularPOJO> getPopular(@QueryMap Map<String, String> queryParams);
+
+
+}
