@@ -1,10 +1,13 @@
 package com.kausthubhadhikari.moviesdb.di.component;
 
 import android.content.Context;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.kausthubhadhikari.moviesdb.di.module.HomeModule;
 import com.kausthubhadhikari.moviesdb.di.scope.ActivityScope;
 import com.kausthubhadhikari.moviesdb.home.HomeActivity;
+import com.kausthubhadhikari.moviesdb.home.HomePresenter;
 
 import dagger.Component;
 
@@ -19,4 +22,9 @@ public interface HomeComponent {
 
     Context providesContext();
 
+    LinearLayoutManager providesLinearLayoutManager();
+
+    DefaultItemAnimator providesItemAnimator();
+
+    HomePresenter providesHomePresenter();
 }
