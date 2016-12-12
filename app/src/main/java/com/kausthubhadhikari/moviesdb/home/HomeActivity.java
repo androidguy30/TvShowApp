@@ -1,7 +1,7 @@
 package com.kausthubhadhikari.moviesdb.home;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -25,6 +25,9 @@ public class HomeActivity extends BaseActivity implements HomeView {
     @Inject
     MaterialDialog progressDialog;
 
+    @Inject
+    LinearLayoutManager layoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_home);
@@ -37,10 +40,9 @@ public class HomeActivity extends BaseActivity implements HomeView {
         injector.inject(this);
     }
 
-    @NonNull
     @Override
     public HomePresenter getPresenter() {
-        return null;
+        return presenter;
     }
 
 

@@ -9,7 +9,7 @@ import com.kausthubhadhikari.moviesdb.utils.base.BasePresenter;
 public class HomePresenter extends BasePresenter {
 
 
-    protected HomePresenter(HomeView view) {
+    public HomePresenter(HomeView view) {
         super(view);
     }
 

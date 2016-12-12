@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.kausthubhadhikari.moviesdb.R;
 import com.kausthubhadhikari.moviesdb.di.injector.Injector;
 import com.kausthubhadhikari.moviesdb.model.pojo.detail.TVShowDetails;
 import com.kausthubhadhikari.moviesdb.utils.base.BaseActivity;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -17,7 +20,11 @@ public class DetailActivity extends BaseActivity implements DetailView {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
+    @Inject
+    DetailPresenter presenter;
 
+    @Inject
+    MaterialDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +41,7 @@ public class DetailActivity extends BaseActivity implements DetailView {
     @NonNull
     @Override
     public DetailPresenter getPresenter() {
-        return null;
+        return presenter;
     }
 
     @Override
@@ -45,12 +52,12 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void showProgress() {
-
+        progressDialog.show();
     }
 
     @Override
     public void hideProgress() {
-
+        progressDialog.dismiss();
     }
 
     @Override
