@@ -5,6 +5,7 @@ import com.kausthubhadhikari.moviesdb.di.module.AppModule;
 import com.kausthubhadhikari.moviesdb.model.api.APIService;
 import com.kausthubhadhikari.moviesdb.model.manager.NetworkManager;
 import com.kausthubhadhikari.moviesdb.utils.misc.AppUtils;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Singleton;
 
@@ -24,5 +25,7 @@ public interface AppComponent {
     public APIService providesApiService();
 
     public NetworkManager providesNetworkManager();
+
+    public Picasso providesPicasso();
 
 }

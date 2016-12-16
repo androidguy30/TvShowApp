@@ -8,6 +8,7 @@ import com.kausthubhadhikari.moviesdb.model.pojo.popular.PopularPOJO;
 import com.kausthubhadhikari.moviesdb.model.pojo.toprated.TVTopRated;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -99,6 +100,7 @@ public class NetworkManager {
     public Observable<ConfigurationPOJO> getConfiguration(String apiKey) {
         return apiService.getConfigurationS(apiKey)
                 .subscribeOn(Schedulers.io())
+                .debounce(1000, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread());
     }
 

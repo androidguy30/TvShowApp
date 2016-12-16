@@ -1,5 +1,6 @@
 package com.kausthubhadhikari.moviesdb.di.module;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
@@ -13,6 +14,8 @@ import com.kausthubhadhikari.moviesdb.model.api.APIService;
 import com.kausthubhadhikari.moviesdb.model.manager.NetworkManager;
 import com.kausthubhadhikari.moviesdb.utils.misc.AppConstants;
 import com.kausthubhadhikari.moviesdb.utils.misc.AppUtils;
+import com.squareup.picasso.LruCache;
+import com.squareup.picasso.Picasso;
 
 import java.util.concurrent.TimeUnit;
 
@@ -92,5 +95,19 @@ public class AppModule {
     @Singleton
     public NetworkManager providesNetworkManager(APIService apiService) {
         return new NetworkManager(apiService);
+    }
+
+    @Provides
+    @Singleton
+    public Picasso providesPicasso(Context context) {
+        return new Picasso.Builder(context)
+                .memoryCache(new LruCache(10000))
+                .build();
+    }
+
+    @Provides
+    @Singleton
+    public Context providesContext() {
+        return appController;
     }
 }

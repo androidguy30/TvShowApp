@@ -81,6 +81,9 @@ public class DetailActivity extends BaseActivity implements DetailView {
     @Inject
     DefaultItemAnimator defaultItemAnimator;
 
+    @Inject
+    Picasso picasso;
+
     private int showId;
 
     @Override
@@ -126,8 +129,8 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void deliverData(TVShowDetails data) {
-        Picasso.with(getApplicationContext()).load(((AppController) getApplicationContext()).getBaseURL() + AppConstants.BACKDROP_BASE_URL_HIGH + data.backdropPath).into(backdrop);
-        Picasso.with(getApplicationContext()).load(((AppController) getApplicationContext()).getBaseURL() + AppConstants.POSTER_BASE_URL_HIGH + data.posterPath).into(profilePicture);
+        picasso.load(((AppController) getApplicationContext()).getBaseURL() + AppConstants.BACKDROP_BASE_URL_HIGH + data.backdropPath).into(backdrop);
+        picasso.load(((AppController) getApplicationContext()).getBaseURL() + AppConstants.POSTER_BASE_URL_HIGH + data.posterPath).into(profilePicture);
         showName.setText(data.name);
         genre.setText(TextUtils.join(",", data.genres));
         description.setText(data.overview);
@@ -138,7 +141,7 @@ public class DetailActivity extends BaseActivity implements DetailView {
         networkVal.setText(data.networks.get(0).name);
         langVal.setText(TextUtils.join(",", data.languages));
         homepageVal.setText(data.homepage);
-
+        seasonsRecyclerView.setAdapter(new SeasonsAdapter(this, data.seasons, picasso));
     }
 
     @Override

@@ -2,7 +2,11 @@ package com.kausthubhadhikari.moviesdb.showdetails;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.kausthubhadhikari.moviesdb.R;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -11,6 +15,8 @@ import butterknife.ButterKnife;
 
 public class SeasonHolder extends RecyclerView.ViewHolder {
 
+    @Bind(R.id.seasonImage)
+    public ImageView seasonImageView;
 
     public SeasonHolder(View itemView) {
         super(itemView);
