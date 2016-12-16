@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="220dp">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/otherfactsHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Other Facts"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/runtime_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="Runtime"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="17sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otherfactsHeader" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/runtime_Val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="44m"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/runtime_lbl" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/network_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="140dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="30dp"
+        android:text="Network"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="17sp"
+        app:layout_constraintLeft_toRightOf="@+id/runtime_lbl"
+        app:layout_constraintTop_toBottomOf="@+id/otherfactsHeader" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/network_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Fox Broadcasting Com."
+        app:layout_constraintLeft_toLeftOf="@+id/network_lbl"
+        app:layout_constraintTop_toBottomOf="@+id/network_lbl" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/lang_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Original Language"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="17sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/runtime_Val" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/lang_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="English"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lang_lbl" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/homepage_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Homepage"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="17sp"
+        app:layout_constraintLeft_toLeftOf="@+id/network_lbl"
+        app:layout_constraintTop_toBottomOf="@+id/network_val" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/homepage_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="www.hbo.com"
+        app:layout_constraintLeft_toLeftOf="@+id/homepage_lbl"
+        app:layout_constraintTop_toBottomOf="@+id/homepage_lbl" />
+
+</android.support.constraint.ConstraintLayout>

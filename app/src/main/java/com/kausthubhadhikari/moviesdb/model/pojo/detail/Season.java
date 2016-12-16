@@ -17,7 +17,7 @@ public class Season {
     public int id;
     @SerializedName("poster_path")
     @Expose
-    public Object posterPath;
+    public String posterPath;
     @SerializedName("season_number")
     @Expose
     public int seasonNumber;

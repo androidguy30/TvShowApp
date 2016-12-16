@@ -6,8 +6,6 @@ package com.kausthubhadhikari.moviesdb.utils.misc;
 
 public class AppUtils {
 
-    public AppUtils() {
 
-    }
 
 }

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/rate"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_shape_drawable"
+        android:text="7.5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="48dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="74dp"
+        android:layout_marginStart="74dp"
+        android:text="Rating"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="11sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rate"
+        android:layout_marginTop="8dp" />
+
+
+    <Button
+        android:id="@+id/seasons"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_shape_drawable"
+        android:text="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="48dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="75dp"
+        android:layout_marginStart="75dp"
+        android:text="Episodes"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="11sp"
+        app:layout_constraintLeft_toRightOf="@+id/appCompatTextView2"
+        android:id="@+id/appCompatTextView4"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/episodes" />
+
+    <Button
+        android:id="@+id/episodes"
+        android:layout_height="48dp"
+        android:background="@drawable/round_shape_drawable"
+        android:text="115"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/rate"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/seasons"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_width="48dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Season"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="11sp"
+        app:layout_constraintTop_toBottomOf="@+id/seasons"
+        android:layout_marginStart="75dp"
+        app:layout_constraintLeft_toRightOf="@+id/appCompatTextView4"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="8dp" />
+
+</android.support.constraint.ConstraintLayout>

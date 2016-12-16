@@ -1,7 +1,6 @@
 package com.kausthubhadhikari.moviesdb.home;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -24,9 +23,6 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Inject
     MaterialDialog progressDialog;
-
-    @Inject
-    LinearLayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +60,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
     @Override
     public void setupViews() {
         setSupportActionBar(toolbar);
+
 
     }
 

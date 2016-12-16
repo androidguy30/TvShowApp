@@ -1,7 +1,11 @@
 package com.kausthubhadhikari.moviesdb.di.component;
 
-import com.kausthubhadhikari.moviesdb.detail.DetailActivity;
-import com.kausthubhadhikari.moviesdb.detail.DetailPresenter;
+import android.content.Context;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+
+import com.kausthubhadhikari.moviesdb.showdetails.DetailActivity;
+import com.kausthubhadhikari.moviesdb.showdetails.DetailPresenter;
 import com.kausthubhadhikari.moviesdb.di.module.DetailModule;
 import com.kausthubhadhikari.moviesdb.di.scope.ActivityScope;
 
@@ -18,4 +22,11 @@ public interface DetailComponent {
     DetailPresenter providesDetailPresenter();
 
     DetailActivity providesDetailsActivity();
+
+    Context providesContext();
+
+    LinearLayoutManager providesLinearLayoutManager();
+
+    DefaultItemAnimator providesItemAnimator();
+
 }

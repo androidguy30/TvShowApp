@@ -3,6 +3,7 @@ package com.kausthubhadhikari.moviesdb.model.pojo.popular;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.kausthubhadhikari.moviesdb.model.pojo.common.Result;
 
 import java.util.ArrayList;
 

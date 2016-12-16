@@ -1,5 +1,5 @@
 
-package com.kausthubhadhikari.moviesdb.model.pojo.popular;
+package com.kausthubhadhikari.moviesdb.model.pojo.common;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -31,7 +31,7 @@ public class Result {
     public String firstAirDate;
     @SerializedName("origin_country")
     @Expose
-    public ArrayList<String> originCountry = new ArrayList<>();
+    public ArrayList<String> originCountry = null;
     @SerializedName("genre_ids")
     @Expose
     public ArrayList<Integer> genreIds = null;

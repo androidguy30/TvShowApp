@@ -1,14 +1,16 @@
 package com.kausthubhadhikari.moviesdb.model.api;
 
+import com.kausthubhadhikari.moviesdb.model.pojo.configuration.ConfigurationPOJO;
 import com.kausthubhadhikari.moviesdb.model.pojo.detail.TVShowDetails;
 import com.kausthubhadhikari.moviesdb.model.pojo.onair.OnAirPojo;
-import com.kausthubhadhikari.moviesdb.model.pojo.toprated.TVTopRated;
 import com.kausthubhadhikari.moviesdb.model.pojo.popular.PopularPOJO;
+import com.kausthubhadhikari.moviesdb.model.pojo.toprated.TVTopRated;
 
 import java.util.Map;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import rx.Observable;
 
@@ -55,5 +57,13 @@ public interface APIService {
     @GET("/tv/popular")
     Observable<PopularPOJO> getPopular(@QueryMap Map<String, String> queryParams);
 
+    /**
+     * Query the configuration.
+     *
+     * @param apiKey
+     * @return
+     */
+    @GET
+    Observable<ConfigurationPOJO> getConfigurationS(@Query("api_key") String apiKey);
 
 }

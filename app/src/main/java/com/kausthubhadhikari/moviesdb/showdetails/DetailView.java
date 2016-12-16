@@ -1,4 +1,4 @@
-package com.kausthubhadhikari.moviesdb.detail;
+package com.kausthubhadhikari.moviesdb.showdetails;
 
 import com.kausthubhadhikari.moviesdb.model.pojo.detail.TVShowDetails;
 import com.kausthubhadhikari.moviesdb.utils.base.BaseView;
@@ -15,8 +15,10 @@ public interface DetailView extends BaseView {
 
     void hideProgress();
 
-    void fetchError(int code);
+    void fetchError(Throwable throwable);
 
     void deliverData(TVShowDetails data);
+
+    int retrieveShowId();
 
 }

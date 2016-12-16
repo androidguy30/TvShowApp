@@ -12,6 +12,7 @@ import com.kausthubhadhikari.moviesdb.di.injector.Injector;
 public class AppController extends Application {
 
     private Injector injector;
+    private String baseURL;
 
     @Override
     public void onCreate() {
@@ -28,6 +29,14 @@ public class AppController extends Application {
             injector = new DaggerInjector();
         }
         return injector;
+    }
+
+    public void setBaseURL(String baseURL) {
+        this.baseURL = baseURL;
+    }
+
+    public String getBaseURL() {
+        return baseURL;
     }
 
 }
