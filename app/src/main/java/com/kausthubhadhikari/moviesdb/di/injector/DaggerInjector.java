@@ -37,7 +37,8 @@ public class DaggerInjector implements Injector {
         DaggerHomeComponent.builder()
                 .appComponent(appComponent)
                 .homeModule(new HomeModule(activity))
-                .build();
+                .build()
+                .inject(activity);
     }
 
     @Override
@@ -45,7 +46,8 @@ public class DaggerInjector implements Injector {
         DaggerDetailComponent.builder()
                 .appComponent(appComponent)
                 .detailModule(new DetailModule(activity))
-                .build();
+                .build()
+                .inject(activity);
     }
 
     @Override
@@ -53,7 +55,8 @@ public class DaggerInjector implements Injector {
         DaggerDrawerFragmentComponent.builder()
                 .appComponent(appComponent)
                 .drawerFragmentModule(new DrawerFragmentModule(fragment))
-                .build();
+                .build()
+                .inject(fragment);
     }
 
     @Override
@@ -61,6 +64,7 @@ public class DaggerInjector implements Injector {
         DaggerSplashComponent.builder()
                 .appComponent(appComponent)
                 .splashModule(new SplashModule(activity))
-                .build();
+                .build()
+                .inject(activity);
     }
 }

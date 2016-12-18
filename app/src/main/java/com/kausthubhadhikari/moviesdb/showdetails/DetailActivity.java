@@ -10,11 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.kausthubhadhikari.moviesdb.AppController;
 import com.kausthubhadhikari.moviesdb.R;
 import com.kausthubhadhikari.moviesdb.di.injector.Injector;
+import com.kausthubhadhikari.moviesdb.model.manager.HorizontalItemDecorator;
 import com.kausthubhadhikari.moviesdb.model.pojo.detail.TVShowDetails;
 import com.kausthubhadhikari.moviesdb.utils.base.BaseActivity;
 import com.kausthubhadhikari.moviesdb.utils.misc.AppConstants;
@@ -84,14 +86,19 @@ public class DetailActivity extends BaseActivity implements DetailView {
     @Inject
     Picasso picasso;
 
-    private int showId;
+    @Inject
+    HorizontalItemDecorator horizontalItemDecorator;
+
+    public int showId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
+        if (getIntent().hasExtra(AppConstants.INTENT_KEY_SHOW_ID)) {
+            showId = getIntent().getExtras().getInt(AppConstants.INTENT_KEY_SHOW_ID);
+        }
         super.onCreate(savedInstanceState);
-        showId = getIntent().getExtras().getInt(AppConstants.INTENT_KEY_SHOW_ID);
     }
 
     @Override
@@ -108,6 +115,9 @@ public class DetailActivity extends BaseActivity implements DetailView {
     @Override
     public void setupView() {
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         seasonsRecyclerView.setItemAnimator(defaultItemAnimator);
         seasonsRecyclerView.setLayoutManager(seasonsLinearLayout);
     }
@@ -124,7 +134,7 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void fetchError(Throwable throwable) {
-
+        Toast.makeText(this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -139,8 +149,8 @@ public class DetailActivity extends BaseActivity implements DetailView {
         no_seasons.setText("" + data.numberOfSeasons);
         runtimeVal.setText(TextUtils.join(",", data.episodeRunTime));
         networkVal.setText(data.networks.get(0).name);
-        langVal.setText(TextUtils.join(",", data.languages));
         homepageVal.setText(data.homepage);
+        seasonsRecyclerView.addItemDecoration(horizontalItemDecorator);
         seasonsRecyclerView.setAdapter(new SeasonsAdapter(this, data.seasons, picasso));
     }
 

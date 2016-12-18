@@ -16,13 +16,13 @@ public class TVShowDetails {
     public ArrayList<CreatedBy> createdBy = new ArrayList<>();
     @SerializedName("episode_run_time")
     @Expose
-    public ArrayList<Integer> episodeRunTime = null;
+    public ArrayList<String> episodeRunTime = new ArrayList<>();
     @SerializedName("first_air_date")
     @Expose
     public String firstAirDate;
     @SerializedName("genres")
     @Expose
-    public ArrayList<Genre> genres = null;
+    public ArrayList<Genre> genres = new ArrayList<>();
     @SerializedName("homepage")
     @Expose
     public String homepage;
@@ -34,7 +34,7 @@ public class TVShowDetails {
     public boolean inProduction;
     @SerializedName("languages")
     @Expose
-    public ArrayList<String> languages = null;
+    public ArrayList<String> languages = new ArrayList<>();
     @SerializedName("last_air_date")
     @Expose
     public String lastAirDate;
@@ -43,7 +43,7 @@ public class TVShowDetails {
     public String name;
     @SerializedName("networks")
     @Expose
-    public ArrayList<Network> networks = null;
+    public ArrayList<Network> networks = new ArrayList<>();
     @SerializedName("number_of_episodes")
     @Expose
     public int numberOfEpisodes;
@@ -52,7 +52,7 @@ public class TVShowDetails {
     public int numberOfSeasons;
     @SerializedName("origin_country")
     @Expose
-    public ArrayList<String> originCountry = null;
+    public ArrayList<String> originCountry = new ArrayList<>();
     @SerializedName("original_language")
     @Expose
     public String originalLanguage;
@@ -70,10 +70,10 @@ public class TVShowDetails {
     public String posterPath;
     @SerializedName("production_companies")
     @Expose
-    public ArrayList<ProductionCompany> productionCompanies = null;
+    public ArrayList<ProductionCompany> productionCompanies = new ArrayList<>();
     @SerializedName("seasons")
     @Expose
-    public ArrayList<Season> seasons = null;
+    public ArrayList<Season> seasons = new ArrayList<>();
     @SerializedName("status")
     @Expose
     public String status;
@@ -82,7 +82,7 @@ public class TVShowDetails {
     public String type;
     @SerializedName("vote_average")
     @Expose
-    public int voteAverage;
+    public float voteAverage;
     @SerializedName("vote_count")
     @Expose
     public int voteCount;

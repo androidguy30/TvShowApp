@@ -21,4 +21,6 @@ public interface DrawerFragmentView extends BaseView {
     public int getPageNumber();
 
     public void deliverError(Throwable throwable);
+
+    public void endInfiniteLoading();
 }

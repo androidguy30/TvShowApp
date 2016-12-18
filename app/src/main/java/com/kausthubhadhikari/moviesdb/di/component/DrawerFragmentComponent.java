@@ -4,10 +4,12 @@ import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.kausthubhadhikari.moviesdb.di.module.DrawerFragmentModule;
 import com.kausthubhadhikari.moviesdb.di.scope.ActivityScope;
 import com.kausthubhadhikari.moviesdb.drawerfragment.DrawerFragment;
 import com.kausthubhadhikari.moviesdb.drawerfragment.DrawerFragmentPresenter;
+import com.kausthubhadhikari.moviesdb.drawerfragment.ItemDecorator;
 
 import dagger.Component;
 
@@ -27,4 +29,8 @@ public interface DrawerFragmentComponent {
     DefaultItemAnimator providesItemAnimator();
 
     DrawerFragmentPresenter provideDrawerFragmentPresenter();
+
+    MaterialDialog providesMaterialDialog();
+
+    ItemDecorator providesItemDecorator();
 }

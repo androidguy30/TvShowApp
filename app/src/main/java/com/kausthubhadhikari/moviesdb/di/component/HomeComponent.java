@@ -1,5 +1,8 @@
 package com.kausthubhadhikari.moviesdb.di.component;
 
+import android.content.Context;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.kausthubhadhikari.moviesdb.di.module.HomeModule;
 import com.kausthubhadhikari.moviesdb.di.scope.ActivityScope;
 import com.kausthubhadhikari.moviesdb.home.HomeActivity;
@@ -17,4 +20,9 @@ public interface HomeComponent {
     void inject(HomeActivity activity);
 
     HomePresenter providesHomePresenter();
+
+    MaterialDialog providesMaterialDialogLoader();
+
+    Context providesContext();
+
 }

@@ -1,10 +1,11 @@
 package com.kausthubhadhikari.moviesdb.di.component;
 
-import com.kausthubhadhikari.moviesdb.di.injector.Injector;
+import android.content.Context;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.kausthubhadhikari.moviesdb.di.module.SplashModule;
 import com.kausthubhadhikari.moviesdb.di.scope.ActivityScope;
 import com.kausthubhadhikari.moviesdb.splash.SplashActivity;
-import com.kausthubhadhikari.moviesdb.splash.SplashPresenter;
 
 import dagger.Component;
 
@@ -12,13 +13,12 @@ import dagger.Component;
  * Created by kausthubhadhikari on 16/12/16.
  */
 @ActivityScope
-@Component(modules = {SplashModule.class},dependencies = {AppComponent.class})
+@Component(modules = {SplashModule.class}, dependencies = {AppComponent.class})
 public interface SplashComponent {
 
-    void inject(Injector injector);
+    void inject(SplashActivity activity);
 
-    public SplashActivity providesSplashActivity();
+    MaterialDialog providesMaterialDialogLoader();
 
-    public SplashPresenter providesSplashPresenter();
-
+    Context providesContext();
 }

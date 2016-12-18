@@ -1,6 +1,5 @@
 package com.kausthubhadhikari.moviesdb.di.component;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.kausthubhadhikari.moviesdb.di.module.AppModule;
 import com.kausthubhadhikari.moviesdb.model.api.APIService;
 import com.kausthubhadhikari.moviesdb.model.manager.NetworkManager;
@@ -17,8 +16,6 @@ import dagger.Component;
 @Singleton
 @Component(modules = {AppModule.class})
 public interface AppComponent {
-
-    public MaterialDialog providesMaterialDialogLoader();
 
     public AppUtils providesAppUtils();
 

@@ -1,13 +1,20 @@
 package com.kausthubhadhikari.moviesdb.di.module;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
+import com.kausthubhadhikari.moviesdb.R;
 import com.kausthubhadhikari.moviesdb.di.scope.ActivityScope;
 import com.kausthubhadhikari.moviesdb.drawerfragment.DrawerFragment;
 import com.kausthubhadhikari.moviesdb.drawerfragment.DrawerFragmentPresenter;
+import com.kausthubhadhikari.moviesdb.drawerfragment.ItemDecorator;
 import com.kausthubhadhikari.moviesdb.model.manager.NetworkManager;
+import com.kausthubhadhikari.moviesdb.utils.misc.AppUtils;
 
 import dagger.Module;
 import dagger.Provides;
@@ -27,7 +34,7 @@ public class DrawerFragmentModule {
     @ActivityScope
     @Provides
     public Context providesContext() {
-        return fragment.getContext();
+        return fragment.getActivity();
     }
 
     @ActivityScope
@@ -52,6 +59,26 @@ public class DrawerFragmentModule {
     @Provides
     public DrawerFragment providesDrawerFragment() {
         return fragment;
+    }
+
+    @ActivityScope
+    @Provides
+    public MaterialDialog providesMaterialDialogLoader(Context context) {
+        MaterialDialog materialDialog = new MaterialDialog.Builder(context)
+                .customView(R.layout.progress_dialog, false)
+                .cancelable(false)
+                .theme(Theme.LIGHT)
+                .build();
+        materialDialog.getWindow().setLayout(AppUtils.dpTox(85), AppUtils.dpTox(85));
+        materialDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#90000000")));
+
+        return materialDialog;
+    }
+
+    @ActivityScope
+    @Provides
+    public ItemDecorator providesItemDecorator() {
+        return new ItemDecorator(AppUtils.dpTox(8));
     }
 
 }

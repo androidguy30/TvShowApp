@@ -1,11 +1,14 @@
 package com.kausthubhadhikari.moviesdb.splash;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.kausthubhadhikari.moviesdb.AppController;
 import com.kausthubhadhikari.moviesdb.R;
 import com.kausthubhadhikari.moviesdb.di.injector.Injector;
+import com.kausthubhadhikari.moviesdb.home.HomeActivity;
 import com.kausthubhadhikari.moviesdb.model.pojo.configuration.ConfigurationPOJO;
 import com.kausthubhadhikari.moviesdb.utils.base.BaseActivity;
 
@@ -30,7 +33,6 @@ public class SplashActivity extends BaseActivity implements SplashView {
         injector.inject(this);
     }
 
-    @NonNull
     @Override
     public SplashPresenter getPresenter() {
         return presenter;
@@ -53,14 +55,16 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
     @Override
     public void onConfigFetched(ConfigurationPOJO data) {
-        if (!data.images.secureBaseUrl.equals(null)) {
-            ((AppController) getApplicationContext()).setBaseURL(data.images.secureBaseUrl);
-        }
+        ((AppController) getApplicationContext()).setBaseURL(data.images.secureBaseUrl);
+        Toast.makeText(this,""+data.images.secureBaseUrl,Toast.LENGTH_SHORT).show();
+        finish();
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void onError(Throwable throwable) {
-
+        Log.i("Error", "" + throwable.toString());
     }
 
 }

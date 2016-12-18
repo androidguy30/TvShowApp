@@ -1,15 +1,10 @@
 package com.kausthubhadhikari.moviesdb.di.module;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.Theme;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.kausthubhadhikari.moviesdb.AppController;
-import com.kausthubhadhikari.moviesdb.R;
 import com.kausthubhadhikari.moviesdb.model.api.APIService;
 import com.kausthubhadhikari.moviesdb.model.manager.NetworkManager;
 import com.kausthubhadhikari.moviesdb.utils.misc.AppConstants;
@@ -77,19 +72,6 @@ public class AppModule {
         return new AppUtils();
     }
 
-    @Provides
-    @Singleton
-    public MaterialDialog providesMaterialDialogLoader() {
-        MaterialDialog materialDialog = new MaterialDialog.Builder(appController)
-                .customView(R.layout.progress_dialog, false)
-                .cancelable(false)
-                .theme(Theme.LIGHT)
-                .build();
-        materialDialog.getWindow().setLayout(85, 85);
-        materialDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#90000000")));
-
-        return materialDialog;
-    }
 
     @Provides
     @Singleton

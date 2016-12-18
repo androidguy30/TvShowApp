@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.kausthubhadhikari.moviesdb.model.manager.HorizontalItemDecorator;
 import com.kausthubhadhikari.moviesdb.showdetails.DetailActivity;
 import com.kausthubhadhikari.moviesdb.showdetails.DetailPresenter;
 import com.kausthubhadhikari.moviesdb.di.module.DetailModule;
@@ -28,5 +30,9 @@ public interface DetailComponent {
     LinearLayoutManager providesLinearLayoutManager();
 
     DefaultItemAnimator providesItemAnimator();
+
+    MaterialDialog providesMaterialDialogLoader();
+
+    HorizontalItemDecorator providesHorizontalItemDecorator();
 
 }

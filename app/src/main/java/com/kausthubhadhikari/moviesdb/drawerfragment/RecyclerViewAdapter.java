@@ -41,7 +41,7 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<ViewHo
     }
 
     public void updateData(ArrayList<T> data) {
-        this.data = data;
+        this.data.addAll(data);
         notifyDataSetChanged();
     }
 }

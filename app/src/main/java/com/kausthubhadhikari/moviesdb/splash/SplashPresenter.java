@@ -28,7 +28,6 @@ public class SplashPresenter extends BasePresenter {
         if (isLaunched) {
             Subscription subscription = manager.getConfiguration(AppConstants.APIKEY)
                     .subscribe(this::onConfigReceived, this::onError);
-
             addSubcription(subscription);
         }
     }

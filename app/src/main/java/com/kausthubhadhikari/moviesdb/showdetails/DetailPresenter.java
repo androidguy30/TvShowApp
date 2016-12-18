@@ -30,12 +30,10 @@ public class DetailPresenter extends BasePresenter {
         view.setupView();
         if (isLaunched) {
             view.showProgress();
-
             Map<String, String> params = new HashMap<>();
             params.put(AppConstants.QUERY_PARAM_API_KEY, AppConstants.APIKEY);
-            params.put(AppConstants.QUERY_PARAM_LANG_KEY, AppConstants.QUERY_PARAM_LANG_VAL);
 
-            Subscription subscription = manager.getShowDetails(params, "" + view.retrieveShowId())
+            Subscription subscription = manager.getShowDetails(params, view.retrieveShowId())
                     .subscribe(this::onDetailsFetched, this::onHandleErrors);
             addSubcription(subscription);
         }
@@ -49,6 +47,7 @@ public class DetailPresenter extends BasePresenter {
     }
 
     private void onHandleErrors(Throwable throwable) {
+        view.hideProgress();
         try {
             view.fetchError(throwable);
         } catch (Exception e) {

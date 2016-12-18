@@ -1,21 +1,26 @@
 package com.kausthubhadhikari.moviesdb.drawerfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.kausthubhadhikari.moviesdb.AppController;
 import com.kausthubhadhikari.moviesdb.R;
 import com.kausthubhadhikari.moviesdb.di.injector.Injector;
 import com.kausthubhadhikari.moviesdb.model.pojo.common.Result;
 import com.kausthubhadhikari.moviesdb.model.pojo.onair.OnAirPojo;
 import com.kausthubhadhikari.moviesdb.model.pojo.popular.PopularPOJO;
 import com.kausthubhadhikari.moviesdb.model.pojo.toprated.TVTopRated;
+import com.kausthubhadhikari.moviesdb.showdetails.DetailActivity;
 import com.kausthubhadhikari.moviesdb.utils.base.BaseFragment;
 import com.kausthubhadhikari.moviesdb.utils.misc.AppConstants;
 import com.squareup.picasso.Picasso;
@@ -44,11 +49,18 @@ public class DrawerFragment extends BaseFragment implements DrawerFragmentView {
     @Inject
     LinearLayoutManager linearLayoutManager;
 
+    @Inject
+    ItemDecorator decorator;
+
     private RecyclerViewAdapter recyclerViewAdapter;
 
     private String apiMethod;
 
-    private int pageNumber = 0;
+    private int pageNumber = 1;
+
+    private boolean isloading = false;
+
+    private int visibleThreshold = 5;
 
     public static DrawerFragment newInstance(String apiMethod) {
         DrawerFragment fragment = new DrawerFragment();
@@ -103,16 +115,52 @@ public class DrawerFragment extends BaseFragment implements DrawerFragmentView {
     public void setupView() {
         baseRecyclerView.setItemAnimator(defaultItemAnimator);
         baseRecyclerView.setLayoutManager(linearLayoutManager);
+        baseRecyclerView.addItemDecoration(decorator);
         recyclerViewAdapter = new RecyclerViewAdapter(new ArrayList()) {
             @Override
             public void onBindData(ViewHolder holder, Object data) {
                 Result popularPOJO = (Result) data;
                 holder.showName.setText(popularPOJO.name);
-                Picasso.with(getContext()).load(AppConstants.BACKDROP_BASE_URL_LOW + popularPOJO.posterPath).into(holder.avatar);
+
+                Picasso.with(getContext()).load(
+                        ((AppController) getActivity().getApplicationContext()).getBaseURL() + AppConstants.BACKDROP_BASE_URL_HIGH + popularPOJO.backdropPath).into(holder.avatar);
                 holder.desc.setText(popularPOJO.overview);
                 holder.votes.setText(popularPOJO.voteCount + " Votes");
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), DetailActivity.class);
+                        intent.putExtra(AppConstants.INTENT_KEY_SHOW_ID, popularPOJO.id);
+                        Toast.makeText(getActivity(),""+popularPOJO.id,Toast.LENGTH_LONG).show();
+                        startActivity(intent);
+                    }
+                });
             }
         };
+
+        baseRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int totalItemCount = recyclerView.getLayoutManager().getItemCount();
+                int lastVisibleItem = ((LinearLayoutManager) recyclerView.getLayoutManager()).
+                        findLastVisibleItemPosition();
+
+
+                boolean loadingCondition = (!isloading
+                        && totalItemCount <= (lastVisibleItem + visibleThreshold));
+
+                if (loadingCondition) {
+                    if (!isloading) {
+                        presenter.loadNextPage();
+                    }
+                    isloading = true;
+
+                }
+
+            }
+        });
         baseRecyclerView.setAdapter(recyclerViewAdapter);
     }
 
@@ -152,6 +200,13 @@ public class DrawerFragment extends BaseFragment implements DrawerFragmentView {
 
     @Override
     public void deliverError(Throwable throwable) {
-
+        Log.i("Error", "" + throwable.toString());
     }
+
+    @Override
+    public void endInfiniteLoading() {
+        isloading = false;
+    }
+
+
 }

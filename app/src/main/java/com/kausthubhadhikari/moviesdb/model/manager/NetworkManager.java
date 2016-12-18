@@ -38,8 +38,8 @@ public class NetworkManager {
      * @param showId
      * @return
      */
-    public Observable<TVShowDetails> getShowDetails(Map<String, String> params, String showId) {
-        return apiService.getShowDetails(params, showId)
+    public Observable<TVShowDetails> getShowDetails(Map<String, String> params, int showId) {
+        return apiService.getShowDetails(showId, params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
@@ -99,8 +99,8 @@ public class NetworkManager {
      */
     public Observable<ConfigurationPOJO> getConfiguration(String apiKey) {
         return apiService.getConfigurationS(apiKey)
+                .debounce(1200, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
-                .debounce(1000, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread());
     }
 

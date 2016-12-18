@@ -27,8 +27,8 @@ public interface APIService {
      * @param tvShowId
      * @return
      */
-    @GET("/tv")
-    Observable<TVShowDetails> getShowDetails(@QueryMap Map<String, String> query, @Path("tv_id") String tvShowId);
+    @GET("tv/{tv_id}")
+    Observable<TVShowDetails> getShowDetails(@Path("tv_id") int tvShowId, @QueryMap Map<String, String> query);
 
     /**
      * Retrieve Top rated shows.
@@ -36,7 +36,7 @@ public interface APIService {
      * @param queryParam
      * @return
      */
-    @GET("/tv/top_rated")
+    @GET("tv/top_rated")
     Observable<TVTopRated> getTopRated(@QueryMap Map<String, String> queryParam);
 
     /**
@@ -45,7 +45,7 @@ public interface APIService {
      * @param queryParams
      * @return
      */
-    @GET("/tv/on_the_air")
+    @GET("tv/on_the_air")
     Observable<OnAirPojo> getOnAir(@QueryMap Map<String, String> queryParams);
 
     /**
@@ -54,7 +54,7 @@ public interface APIService {
      * @param queryParams
      * @return
      */
-    @GET("/tv/popular")
+    @GET("tv/popular")
     Observable<PopularPOJO> getPopular(@QueryMap Map<String, String> queryParams);
 
     /**
@@ -63,7 +63,7 @@ public interface APIService {
      * @param apiKey
      * @return
      */
-    @GET
+    @GET("configuration")
     Observable<ConfigurationPOJO> getConfigurationS(@Query("api_key") String apiKey);
 
 }

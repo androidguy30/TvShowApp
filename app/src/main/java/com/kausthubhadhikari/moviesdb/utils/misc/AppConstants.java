@@ -7,7 +7,7 @@ package com.kausthubhadhikari.moviesdb.utils.misc;
 public class AppConstants {
 
     public static String APIKEY = "64a6e95cf3cc3cde458d25d96c75cb9b";
-    public static String BASE_URL = "https://api.themoviedb.org/3";
+    public static String BASE_URL = "https://api.themoviedb.org/3/";
     public static String INTENT_KEY_SHOW_ID = "SHOW_ID";
     public static String QUERY_PARAM_API_KEY = "api_key";
     public static String QUERY_PARAM_LANG_KEY = "language";

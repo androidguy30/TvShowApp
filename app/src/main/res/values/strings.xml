@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">MoviesDB</string>
+    <string name="app_name">Telegator</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_detail">DetailActivity</string>
-
+    <string name="drawer_open">Drawer Opened</string>
+    <string name="drawer_closed">Drawer Closed</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
