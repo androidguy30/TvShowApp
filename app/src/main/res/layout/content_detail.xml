@@ -37,6 +37,7 @@
             android:text="Interstellar"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textSize="23sp"
+            android:paddingRight="16dp"
             app:layout_constraintLeft_toRightOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:text="Drama, Comedy and Mystery"
             android:textSize="13sp"
             app:layout_constraintLeft_toRightOf="@+id/imageView"

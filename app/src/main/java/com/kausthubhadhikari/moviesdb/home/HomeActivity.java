@@ -14,6 +14,7 @@ import com.kausthubhadhikari.moviesdb.R;
 import com.kausthubhadhikari.moviesdb.di.injector.Injector;
 import com.kausthubhadhikari.moviesdb.drawerfragment.DrawerFragment;
 import com.kausthubhadhikari.moviesdb.utils.base.BaseActivity;
+import com.kausthubhadhikari.moviesdb.utils.misc.AppConstants;
 
 import javax.inject.Inject;
 
@@ -40,6 +41,7 @@ public class HomeActivity extends BaseActivity implements HomeView, NavigationVi
     @Inject
     MaterialDialog progressDialog;
 
+    public int itemSelected = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +85,12 @@ public class HomeActivity extends BaseActivity implements HomeView, NavigationVi
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
 
-        setSelectedItem(R.id.popular_item);
         navigationView.setNavigationItemSelectedListener(this);
+        if (itemSelected == 0) {
+            setSelectedItem(R.id.popular_item);
+        } else {
+            setSelectedItem(itemSelected);
+        }
     }
 
     @Override
@@ -100,12 +106,12 @@ public class HomeActivity extends BaseActivity implements HomeView, NavigationVi
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         drawerLayout.closeDrawers();
-        navigationView.setCheckedItem(item.getItemId());
         setSelectedItem(item.getItemId());
         return true;
     }
 
     public void setSelectedItem(int item) {
+        navigationView.setCheckedItem(item);
         switch (item) {
             case R.id.popular_item: {
                 DrawerFragment fragment = new DrawerFragment().newInstance("popular");
@@ -144,12 +150,27 @@ public class HomeActivity extends BaseActivity implements HomeView, NavigationVi
         switch (item.getItemId()) {
             case android.R.id.home:
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                    drawerLayout.openDrawer(GravityCompat.START);
-                } else {
                     drawerLayout.closeDrawer(GravityCompat.START);
+                } else {
+                    drawerLayout.openDrawer(GravityCompat.START);
                 }
-                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        itemSelected = savedInstanceState.getInt(AppConstants.DRAWER_ITEM_SELECTED, 0);
+        presenter.onRestoreState(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(AppConstants.DRAWER_ITEM_SELECTED, itemSelected);
+        presenter.onSaveState(outState);
+    }
+
 }

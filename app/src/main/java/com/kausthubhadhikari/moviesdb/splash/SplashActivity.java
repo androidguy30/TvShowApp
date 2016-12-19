@@ -3,7 +3,6 @@ package com.kausthubhadhikari.moviesdb.splash;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.kausthubhadhikari.moviesdb.AppController;
 import com.kausthubhadhikari.moviesdb.R;
@@ -56,7 +55,6 @@ public class SplashActivity extends BaseActivity implements SplashView {
     @Override
     public void onConfigFetched(ConfigurationPOJO data) {
         ((AppController) getApplicationContext()).setBaseURL(data.images.secureBaseUrl);
-        Toast.makeText(this,""+data.images.secureBaseUrl,Toast.LENGTH_SHORT).show();
         finish();
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);

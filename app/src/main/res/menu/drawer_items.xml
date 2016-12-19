@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/popular_item"
-        android:title="Popular" />
-    <item
-        android:id="@+id/top_rated_item"
-        android:title="Top Rated" />
-    <item
-        android:id="@+id/on_air_item"
-        android:title="On Air Show" />
+    <group
+        android:id="@+id/group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/popular_item"
+            android:icon="@drawable/ic_whatshot_black_24dp"
+            android:title="Popular" />
+        <item
+            android:id="@+id/top_rated_item"
+            android:icon="@drawable/ic_trending_up_black_24dp"
+            android:title="Top Rated" />
+        <item
+            android:id="@+id/on_air_item"
+            android:icon="@drawable/ic_airplay_black_24dp"
+            android:title="On Air Show" />
+    </group>
 </menu>

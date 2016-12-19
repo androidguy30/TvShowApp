@@ -20,4 +20,5 @@ public class AppConstants {
     public static String BACKDROP_BASE_URL_LOW = "w300";
     public static String POSTER_BASE_URL_LOW = "w342";
     public static String POSTER_BASE_URL_HIGH = "w500";
+    public static String DRAWER_ITEM_SELECTED = "ITEM_SELECTED";
 }

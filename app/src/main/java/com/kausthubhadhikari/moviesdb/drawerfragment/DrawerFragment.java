@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.kausthubhadhikari.moviesdb.AppController;
@@ -31,6 +30,8 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import icepick.Icepick;
+import icepick.State;
 
 public class DrawerFragment extends BaseFragment implements DrawerFragmentView {
 
@@ -54,11 +55,14 @@ public class DrawerFragment extends BaseFragment implements DrawerFragmentView {
 
     private RecyclerViewAdapter recyclerViewAdapter;
 
-    private String apiMethod;
+    @State
+    public String apiMethod;
 
-    private int pageNumber = 1;
+    @State
+    public int pageNumber = 1;
 
-    private boolean isloading = false;
+    @State
+    public boolean isloading = false;
 
     private int visibleThreshold = 5;
 
@@ -131,7 +135,6 @@ public class DrawerFragment extends BaseFragment implements DrawerFragmentView {
                     public void onClick(View view) {
                         Intent intent = new Intent(getActivity(), DetailActivity.class);
                         intent.putExtra(AppConstants.INTENT_KEY_SHOW_ID, popularPOJO.id);
-                        Toast.makeText(getActivity(),""+popularPOJO.id,Toast.LENGTH_LONG).show();
                         startActivity(intent);
                     }
                 });
@@ -153,6 +156,7 @@ public class DrawerFragment extends BaseFragment implements DrawerFragmentView {
 
                 if (loadingCondition) {
                     if (!isloading) {
+                        pageNumber = pageNumber + 1;
                         presenter.loadNextPage();
                     }
                     isloading = true;
@@ -208,5 +212,16 @@ public class DrawerFragment extends BaseFragment implements DrawerFragmentView {
         isloading = false;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Icepick.saveInstanceState(this, outState);
 
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Icepick.restoreInstanceState(this, savedInstanceState);
+    }
 }
