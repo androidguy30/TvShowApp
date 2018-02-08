@@ -8,11 +8,11 @@ import com.kausthubhadhikari.moviesdb.model.pojo.toprated.TVTopRated;
 
 import java.util.Map;
 
+import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
-import rx.Observable;
 
 /**
  * Created by kausthubhadhikari on 12/12/16.
@@ -28,7 +28,7 @@ public interface APIService {
      * @return
      */
     @GET("tv/{tv_id}")
-    Observable<TVShowDetails> getShowDetails(@Path("tv_id") int tvShowId, @QueryMap Map<String, String> query);
+    Flowable<TVShowDetails> getShowDetails(@Path("tv_id") int tvShowId, @QueryMap Map<String, String> query);
 
     /**
      * Retrieve Top rated shows.
@@ -37,7 +37,7 @@ public interface APIService {
      * @return
      */
     @GET("tv/top_rated")
-    Observable<TVTopRated> getTopRated(@QueryMap Map<String, String> queryParam);
+    Flowable<TVTopRated> getTopRated(@QueryMap Map<String, String> queryParam);
 
     /**
      * Retrieve OnAir
@@ -46,7 +46,7 @@ public interface APIService {
      * @return
      */
     @GET("tv/on_the_air")
-    Observable<OnAirPojo> getOnAir(@QueryMap Map<String, String> queryParams);
+    Flowable<OnAirPojo> getOnAir(@QueryMap Map<String, String> queryParams);
 
     /**
      * Retrieve Popular Tv Shows
@@ -55,7 +55,7 @@ public interface APIService {
      * @return
      */
     @GET("tv/popular")
-    Observable<PopularPOJO> getPopular(@QueryMap Map<String, String> queryParams);
+    Flowable<PopularPOJO> getPopular(@QueryMap Map<String, String> queryParams);
 
     /**
      * Query the configuration.
@@ -64,6 +64,6 @@ public interface APIService {
      * @return
      */
     @GET("configuration")
-    Observable<ConfigurationPOJO> getConfigurationS(@Query("api_key") String apiKey);
+    Flowable<ConfigurationPOJO> getConfigurationS(@Query("api_key") String apiKey);
 
 }

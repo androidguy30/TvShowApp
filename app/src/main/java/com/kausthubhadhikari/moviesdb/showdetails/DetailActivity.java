@@ -26,59 +26,59 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import icepick.Icepick;
 import icepick.State;
 
 public class DetailActivity extends BaseActivity implements DetailView, AppBarLayout.OnOffsetChangedListener {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @Bind(R.id.backdrop)
+    @BindView(R.id.backdrop)
     ImageView backdrop;
 
-    @Bind(R.id.imageView)
+    @BindView(R.id.imageView)
     ImageView profilePicture;
 
-    @Bind(R.id.showName)
+    @BindView(R.id.showName)
     AppCompatTextView showName;
 
-    @Bind(R.id.genre)
+    @BindView(R.id.genre)
     AppCompatTextView genre;
 
-    @Bind(R.id.desc_data)
+    @BindView(R.id.desc_data)
     AppCompatTextView description;
 
-    @Bind(R.id.rate)
+    @BindView(R.id.rate)
     Button no_rate;
 
-    @Bind(R.id.seasons)
+    @BindView(R.id.seasons)
     Button no_seasons;
 
-    @Bind(R.id.episodes)
+    @BindView(R.id.episodes)
     Button no_episodes;
 
-    @Bind(R.id.season_recyclerView)
+    @BindView(R.id.season_recyclerView)
     RecyclerView seasonsRecyclerView;
 
-    @Bind(R.id.runtime_Val)
+    @BindView(R.id.runtime_Val)
     AppCompatTextView runtimeVal;
 
-    @Bind(R.id.network_val)
+    @BindView(R.id.network_val)
     AppCompatTextView networkVal;
 
-    @Bind(R.id.lang_val)
+    @BindView(R.id.lang_val)
     AppCompatTextView langVal;
 
-    @Bind(R.id.homepage_val)
+    @BindView(R.id.homepage_val)
     AppCompatTextView homepageVal;
 
-    @Bind(R.id.appBar)
+    @BindView(R.id.appBar)
     AppBarLayout appBarLayout;
 
-    @Bind(R.id.collapsingToolbar)
+    @BindView(R.id.collapsingToolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Inject
@@ -140,7 +140,6 @@ public class DetailActivity extends BaseActivity implements DetailView, AppBarLa
         seasonsRecyclerView.setItemAnimator(defaultItemAnimator);
         seasonsRecyclerView.setLayoutManager(seasonsLinearLayout);
         appBarLayout.addOnOffsetChangedListener(this);
-
     }
 
     @Override

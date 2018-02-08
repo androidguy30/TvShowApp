@@ -5,7 +5,7 @@ import com.kausthubhadhikari.moviesdb.model.pojo.configuration.ConfigurationPOJO
 import com.kausthubhadhikari.moviesdb.utils.base.BasePresenter;
 import com.kausthubhadhikari.moviesdb.utils.misc.AppConstants;
 
-import rx.Subscription;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by kausthubhadhikari on 16/12/16.
@@ -26,9 +26,9 @@ public class SplashPresenter extends BasePresenter {
     public void onViewCreated(boolean isLaunched) {
         splashView.onSetupView();
         if (isLaunched) {
-            Subscription subscription = manager.getConfiguration(AppConstants.APIKEY)
+            Disposable disposable = manager.getConfiguration(AppConstants.APIKEY)
                     .subscribe(this::onConfigReceived, this::onError);
-            addSubcription(subscription);
+            addSubcription(disposable);
         }
     }
 

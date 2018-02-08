@@ -2,8 +2,8 @@ package com.kausthubhadhikari.moviesdb.utils.base;
 
 import android.support.annotation.CallSuper;
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by kausthubhadhikari on 11/12/16.
@@ -12,21 +12,21 @@ import rx.subscriptions.CompositeSubscription;
 public abstract class BasePresenter {
 
     private final BaseView view;
-    private final CompositeSubscription compositeSubscription;
+    private final CompositeDisposable compositeDisposable;
     public static String TAG = "BasePresenter";
 
     protected BasePresenter(BaseView view) {
         this.view = view;
-        compositeSubscription = new CompositeSubscription();
+        compositeDisposable = new CompositeDisposable();
     }
 
     @CallSuper
     protected void unsubscribe() {
-        compositeSubscription.clear();
+        compositeDisposable.clear();
     }
 
-    protected void addSubcription(Subscription subscription) {
-        compositeSubscription.add(subscription);
+    protected void addSubcription(Disposable disposable) {
+        compositeDisposable.add(disposable);
     }
 
     public abstract void onViewCreated(boolean isLaunched);

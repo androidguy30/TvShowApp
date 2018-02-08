@@ -8,12 +8,21 @@
     android:background="@color/colorPrimary"
     tools:context="com.kausthubhadhikari.moviesdb.splash.SplashActivity">
 
+    <ImageView
+        android:id="@+id/placeholder"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/telegator_splash" />
+
     <android.support.v7.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@id/placeholder"
+        android:layout_centerHorizontal="true"
         android:text="TELEGATOR"
+        android:paddingTop="19dp"
         android:textColor="#fff"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

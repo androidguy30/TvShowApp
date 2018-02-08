@@ -18,21 +18,21 @@ import com.kausthubhadhikari.moviesdb.utils.misc.AppConstants;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends BaseActivity implements HomeView, NavigationView.OnNavigationItemSelectedListener {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @Bind(R.id.container)
+    @BindView(R.id.container)
     FrameLayout container;
 
-    @Bind(R.id.drawerlayout)
+    @BindView(R.id.drawerlayout)
     DrawerLayout drawerLayout;
 
-    @Bind(R.id.navigationView)
+    @BindView(R.id.navigationView)
     NavigationView navigationView;
 
     @Inject
@@ -46,6 +46,7 @@ public class HomeActivity extends BaseActivity implements HomeView, NavigationVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_home);
+        ButterKnife.setDebug(true);
         ButterKnife.bind(this);
         super.onCreate(savedInstanceState);
     }

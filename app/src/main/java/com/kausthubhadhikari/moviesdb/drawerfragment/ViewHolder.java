@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.kausthubhadhikari.moviesdb.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -16,16 +16,16 @@ import butterknife.ButterKnife;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
-    @Bind(R.id.avatar)
+    @BindView(R.id.avatar)
     public ImageView avatar;
 
-    @Bind(R.id.showName)
+    @BindView(R.id.showName)
     public AppCompatTextView showName;
 
-    @Bind(R.id.genre)
+    @BindView(R.id.genre)
     public AppCompatTextView votes;
 
-    @Bind(R.id.desc)
+    @BindView(R.id.desc)
     public AppCompatTextView desc;
 
     public ViewHolder(View itemView) {

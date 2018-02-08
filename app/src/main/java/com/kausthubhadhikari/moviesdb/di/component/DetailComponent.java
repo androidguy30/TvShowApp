@@ -29,7 +29,7 @@ public interface DetailComponent {
 
     LinearLayoutManager providesLinearLayoutManager();
 
-    DefaultItemAnimator providesItemAnimator();
+    DefaultItemAnimator providsItemAnimator();
 
     MaterialDialog providesMaterialDialogLoader();
 

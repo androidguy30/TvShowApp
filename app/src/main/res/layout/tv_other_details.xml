@@ -103,9 +103,12 @@
         android:id="@+id/homepage_val"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="9dp"
         android:text="www.hbo.com"
+        android:maxLength="25"
+        android:autoLink="web"
         app:layout_constraintLeft_toLeftOf="@+id/homepage_lbl"
-        app:layout_constraintTop_toBottomOf="@+id/homepage_lbl" />
+        app:layout_constraintTop_toBottomOf="@+id/homepage_lbl"
+        android:layout_marginLeft="0dp" />
 
 </android.support.constraint.ConstraintLayout>

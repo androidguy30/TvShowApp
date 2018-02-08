@@ -28,14 +28,14 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import icepick.Icepick;
 import icepick.State;
 
 public class DrawerFragment extends BaseFragment implements DrawerFragmentView {
 
-    @Bind(R.id.baseRecyclerView)
+    @BindView(R.id.baseRecyclerView)
     RecyclerView baseRecyclerView;
 
     @Inject

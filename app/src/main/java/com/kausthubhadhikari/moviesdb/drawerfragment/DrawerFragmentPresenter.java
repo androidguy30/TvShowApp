@@ -7,7 +7,7 @@ import com.kausthubhadhikari.moviesdb.utils.misc.AppConstants;
 import java.util.HashMap;
 import java.util.Map;
 
-import rx.Subscription;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by kausthubhadhikari on 14/12/16.
@@ -52,8 +52,8 @@ public class DrawerFragmentPresenter extends BasePresenter {
             params.put(AppConstants.QUERY_PARAM_LANG_KEY, AppConstants.QUERY_PARAM_LANG_VAL);
             params.put(AppConstants.QUERY_PARAM_PAGE, "" + fragment.getPageNumber());
 
-            Subscription subscription = manager.getPopularShows(params).subscribe(this::onDataLoaded, this::onErrorOccured);
-            addSubcription(subscription);
+            Disposable disposable = manager.getPopularShows(params).subscribe(this::onDataLoaded, this::onErrorOccured);
+            addSubcription(disposable);
 
         } else if (fragment.getMethodName().equals("top_rated")) {
             Map<String, String> params = new HashMap<>();
@@ -61,16 +61,16 @@ public class DrawerFragmentPresenter extends BasePresenter {
             params.put(AppConstants.QUERY_PARAM_LANG_KEY, AppConstants.QUERY_PARAM_LANG_VAL);
             params.put(AppConstants.QUERY_PARAM_PAGE, "" + fragment.getPageNumber());
 
-            Subscription subscription = manager.getTopRated(params).subscribe(this::onDataLoaded, this::onErrorOccured);
-            addSubcription(subscription);
+            Disposable disposable = manager.getTopRated(params).subscribe(this::onDataLoaded, this::onErrorOccured);
+            addSubcription(disposable);
         } else if (fragment.getMethodName().equals("on_air")) {
             Map<String, String> params = new HashMap<>();
             params.put(AppConstants.QUERY_PARAM_API_KEY, AppConstants.APIKEY);
             params.put(AppConstants.QUERY_PARAM_PAGE, "" + fragment.getPageNumber());
             params.put(AppConstants.QUERY_PARAM_LANG_KEY, AppConstants.QUERY_PARAM_LANG_VAL);
 
-            Subscription subscription = manager.getOnAirShows(params).subscribe(this::onDataLoaded, this::onErrorOccured);
-            addSubcription(subscription);
+            Disposable disposable = manager.getOnAirShows(params).subscribe(this::onDataLoaded, this::onErrorOccured);
+            addSubcription(disposable);
         }
     }
 
